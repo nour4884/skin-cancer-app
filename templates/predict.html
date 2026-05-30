@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin Cancer Analysis</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f7f4ea 0%, #d9e7f1 100%);
+      }
+
+      .page-wrap {
+        padding: 48px 16px;
+      }
+
+      .analysis-card {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 32px;
+        border: 0;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 20px 60px rgba(34, 52, 74, 0.14);
+      }
+
+      .hero-title {
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        color: #1b3a4b;
+      }
+
+      .hero-copy {
+        text-align: center;
+        color: #4a6270;
+        margin-bottom: 24px;
+      }
+
+      .preview-image {
+        display: none;
+        width: 100%;
+        max-width: 320px;
+        margin: 16px auto 0;
+        border-radius: 18px;
+        border: 1px solid #d8e2e8;
+      }
+
+      .loader-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(17, 27, 35, 0.65);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loader-box {
+        min-width: 240px;
+        padding: 24px;
+        border-radius: 20px;
+        background: #fff;
+        text-align: center;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader" class="loader-overlay">
+      <div class="loader-box">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-3 mb-0">Analyzing image...</p>
+      </div>
+    </div>
+
+    <main class="page-wrap">
+      <section class="analysis-card">
+        <h1 class="hero-title">Skin Cancer Analysis</h1>
+        <p class="hero-copy">
+          Upload a skin lesion image and patient details to generate an AI-assisted report.
+        </p>
+
+        <form method="POST" action="/predict" enctype="multipart/form-data">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="first_name" class="form-label">First Name</label>
+              <input
+                id="first_name"
+                type="text"
+                name="first_name"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="last_name" class="form-label">Last Name</label>
+              <input
+                id="last_name"
+                type="text"
+                name="last_name"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="age" class="form-label">Age</label>
+              <input
+                id="age"
+                type="number"
+                name="age"
+                class="form-control"
+                min="0"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="gender" class="form-label">Gender</label>
+              <select id="gender" name="gender" class="form-select" required>
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="body_part" class="form-label">Body Part</label>
+              <input
+                id="body_part"
+                type="text"
+                name="body_part"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <label for="imageInput" class="form-label">Upload Image</label>
+              <input
+                id="imageInput"
+                type="file"
+                name="image"
+                class="form-control"
+                accept="image/*"
+                required
+              />
+              <img id="preview" class="preview-image" alt="Selected image preview" />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mt-4">
+            Analyze
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      const input = document.getElementById("imageInput");
+      const preview = document.getElementById("preview");
+      const form = document.querySelector("form");
+      const loader = document.getElementById("loader");
+
+      input.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+
+        if (!file) {
+          preview.style.display = "none";
+          preview.removeAttribute("src");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+          preview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+      });
+
+      form.addEventListener("submit", function () {
+        loader.style.display = "flex";
+      });
+    </script>
+  </body>
+</html>
