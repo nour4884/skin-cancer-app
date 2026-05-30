@@ -1,12 +1,8 @@
 
 
-# Skin Cance<img width="1459" height="912" alt="Capture d&#39;écran 2026-05-30 200113" src="https://github.com/user-attachments/assets/abb77208-8f13-4900-bc72-b56c5b04553f" />
-<img width="1251" height="735" alt="Capture d&#39;écran 2026-05-30 200125" src="https://github.com/user-attachments/assets/f65d2eda-fee8-432a-848f-2a99faeca452" />
+# Skin Cancer
 
 
-
-<img width="1114" height="880" alt="Capture d&#39;écran 2026-05-30 200155" src="https://github.com/user-attachments/assets/d0de1233-7178-4e60-a4a9-c3881343b3a9" />
-<img width="1014" height="759" alt="Capture d&#39;écran 2026-05-30 200139" src="https://github.com/user-attachments/assets/2add6eee-a81c-467c-9cd7-0388fac97d36" />
 
 
 
@@ -46,7 +42,8 @@ The main objectives of this project are:
 
 ## Application Features
 
-### Patient Information Form
+### Patient Information Form 
+<img width="1459" height="912" alt="Capture d&#39;écran 2026-05-30 200113" src="https://github.com/user-attachments/assets/abb77208-8f13-4900-bc72-b56c5b04553f" />
 
 The user enters:
 
@@ -59,11 +56,12 @@ The user enters:
 ### Image Upload
 
 The application allows uploading a skin lesion image for analysis.
+<img width="1251" height="735" alt="Capture d&#39;écran 2026-05-30 200125" src="https://github.com/user-attachments/assets/f65d2eda-fee8-432a-848f-2a99faeca452" />
 
 ### AI Prediction
 
 The deep learning model analyzes the uploaded image and predicts:
-
+<img width="1014" height="759" alt="Capture d&#39;écran 2026-05-30 200139" src="https://github.com/user-attachments/assets/2add6eee-a81c-467c-9cd7-0388fac97d36" />
 * Benign
 * Malignant
 
@@ -82,7 +80,7 @@ Based on the prediction confidence, a risk level is displayed:
 ### PDF Medical Report
 
 A professional PDF report can be generated containing:
-
+<img width="1114" height="880" alt="Capture d&#39;écran 2026-05-30 200155" src="https://github.com/user-attachments/assets/d0de1233-7178-4e60-a4a9-c3881343b3a9" />
 * Patient information
 * Diagnosis result
 * Confidence score
