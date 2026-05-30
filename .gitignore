@@ -1,0 +1,7 @@
+model/
+*.h5
+static/uploads/
+static/medical_report.pdf
+medical_report.pdf
+__pycache__/
+*.pyc
